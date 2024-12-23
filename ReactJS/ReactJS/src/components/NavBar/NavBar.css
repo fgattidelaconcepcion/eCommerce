@@ -1,0 +1,14 @@
+header {
+    background-color: black;  /* Color de fondo negro */
+    color: white;             /* Cambiar el color del texto a blanco para que sea visible */
+    
+    /* Flexbox para centrar en dirección horizontal */
+    display: flex;            /* Activa Flexbox */
+    justify-content: center;  /* Centra el contenido horizontalmente */
+    
+    height: 100vh;            /* Asegura que el header ocupe toda la altura de la ventana */
+    align-items: flex-start;  /* Alinea el contenido en la parte superior */
+    padding: 20px;            /* Espaciado interno para darle más espacio */
+    text-align: center;       /* Centra el texto */
+  }
+  
