@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 // Componentes 
 import NavBar from './components/NavBar/NavBar';
@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <Router>
-      {/* Aquí tienes los enlaces de navegación */}
+      {/*enlaces de navegación */}
       <NavBar />
       <CartWidget />  
 
@@ -32,9 +32,11 @@ const App = () => {
       </nav>
 
       {/* Aquí renderizas los componentes dependiendo de la ruta */}
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/productos" component={ItemListContainer} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/productos" element={<ItemListContainer />} />
+      </Routes>
     </Router>
   );
 };
