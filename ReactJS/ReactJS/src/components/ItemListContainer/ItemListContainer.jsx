@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getProductos } from "../../utils/productos";
+import ItemList from "./ItemList/ItemList";
+
+
 
 const ItemListContainer = () => {
-  // Estado para mostrar el mensaje
-  const [mensajeVisible, setMensajeVisible] = useState(false);
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Función para manejar el clic del botón
-  const mostrarMensaje = () => {
-    setMensajeVisible(true);
-  };
-
+  useEffect(() => {
+    getProductos()
+      .then((productos) => {
+        console.log("Productos cargados:", productos); // Verifica si los productos se están cargando
+        setProductos(productos);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error al cargar productos:", error);
+        setLoading(false);
+      });
+  }, []);
+  
   return (
     <div>
-      <h2>Lista de Productos</h2>
-      
-      {/* Botón que activa la función mostrarMensaje */}
-      <button onClick={mostrarMensaje}>Mostrar Mensaje</button>
-      
-      {/* Mostrar el mensaje si mensajeVisible es true */}
-      {mensajeVisible && <p>¡Has hecho click en el botón!</p>}
+      {loading ? (
+        <p>Loading...</p> // Mensaje de carga mientras se obtienen los productos
+      ) : (
+        <ItemList productos={productos} />
+      )}
     </div>
   );
 };
