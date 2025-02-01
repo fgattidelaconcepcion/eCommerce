@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import CartWidget from './components/CartWidget/CartWidget';  
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailsContainer from './components/itemDetailsContainer/ItemDetailsContainer';
+import { CarritoProvider } from './context/CarritoContext';
 
 // Componentes adicionales para las rutas
 import Home from './components/Home/Home';
@@ -12,23 +14,27 @@ import Home from './components/Home/Home';
 const App = () => {
   return (
     <Router>
-      {/* Navegación */}
-      <NavBar />
-      <CartWidget />
+      <CarritoProvider>
+        {/* Navegación */}
+        <NavBar />
+        <CartWidget />
 
-      {/* Links de navegación */}
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/productos">Productos</Link></li>
-        </ul>
-      </nav>
+        {/* Links de navegación */}
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/productos/ropa">Ropa</Link></li>
+            <li><Link to="/productos/calzado">Calzado</Link></li>
+          </ul>
+        </nav>
 
-      {/* Rutas */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/productos" element={<ItemListContainer />} />
-      </Routes>
+        {/* Rutas */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/productos/:categoria" element={<ItemListContainer />} />
+          <Route path='/item/:idItem' element={<ItemDetailsContainer />} />
+        </Routes>
+      </CarritoProvider>
     </Router>
   );
 };

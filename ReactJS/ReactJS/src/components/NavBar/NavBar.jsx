@@ -9,9 +9,8 @@ const NavBar = () => {
         
         <nav>
             <ul>
-                <li>Remeras</li>
-                <li>Pantalones</li>
-                <li>Canguros</li>
+                <li>Ropa</li>
+                <li>Calzados</li>
             </ul>
         </nav>
 

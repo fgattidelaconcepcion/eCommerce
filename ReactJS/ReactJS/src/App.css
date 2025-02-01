@@ -1,0 +1,77 @@
+/* Estilos globales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  .nav-links li {
+    margin-right: 20px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+  }
+  
+  .nav-links li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Ajustar el contenedor general de productos */
+.item-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px; /* Agregar espacio entre los contenedores de los productos */
+}
+  
+  /* Aumentar el tamaño del contenedor */
+.item {
+  background-color: gray;
+  border-radius: 10px;
+  width: 25rem;          /* Cambia el tamaño del contenedor a un valor mayor */
+  margin: 1rem;          /* Espacio entre los productos */
+  padding: 1rem;         /* Más espacio interno */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;    /* Centra el texto dentro del contenedor */
+}
+  
+/* Hacer la imagen más grande y ajustarla */
+.item img {
+  width: 100%;           /* La imagen ocupa el 100% del ancho del contenedor */
+  height: auto;          /* Mantiene la relación de aspecto */
+  max-width: 100%;       /* Asegura que la imagen no se desborde del contenedor */
+  object-fit: contain;   /* Ajusta la imagen para que no se deforme */
+}
+
+/* Aumentar el tamaño del botón  */
+.cardProducto button {
+  background-color: #373d20;
+  color: #fafafa;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: none;
+  padding: 12px 25px;    /* Tamaño del botón más grande */
+  margin-top: 1rem;      /* Espacio adicional entre producto y botón */
+}
