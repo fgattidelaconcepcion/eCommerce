@@ -1,19 +1,21 @@
-import { useContext } from "react";
-import { CarritoContext } from "../../context/CarritoContext";
+// src/components/cartItem/CartItem.jsx
+import { useContext } from 'react';
+import { CarritoContext } from '../../context/CarritoContext';
 
-import React from 'react'
-
-const CartItem = ({item,cantidad}) => {
-    const {eliminarProducto} = useContext(CarritoContext)
+const CartItem = ({ item, cantidad }) => {
+  const { eliminarProducto } = useContext(CarritoContext);
 
   return (
     <div>
-        <h4>{item.nombre}</h4>
-        <p>Cantidad : {cantidad}</p>
-        <p>Precio: {item.precio}</p>
-        <button onClick={()=>eliminarProducto(item.id)}> Eliminar</button>
-    </div>
-  )
-}
+      <h4>{item.nombre}</h4>
+      <p>Cantidad: {cantidad}</p>
+      <p>Precio: ${item.precio}</p>
+      <p>Total: ${item.precio * cantidad}</p>
 
-export default CartItem
+      {/* Botón para eliminar producto del carrito */}
+      <button onClick={() => eliminarProducto(item.id)}>Eliminar</button>
+    </div>
+  );
+};
+
+export default CartItem;

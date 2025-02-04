@@ -1,25 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-
-// Componentes
+import { CarritoProvider } from './context/CarritoContext';
 import NavBar from './components/NavBar/NavBar';
-import CartWidget from './components/CartWidget/CartWidget';  
+import CartWidget from './components/CartWidget/CartWidget';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailsContainer from './components/itemDetailsContainer/ItemDetailsContainer';
-import { CarritoProvider } from './context/CarritoContext';
+import Cart from './components/cart/Cart';
 
-// Componentes adicionales para las rutas
 import Home from './components/Home/Home';
+
 
 const App = () => {
   return (
     <Router>
       <CarritoProvider>
-        {/* Navegación */}
         <NavBar />
         <CartWidget />
-
-        {/* Links de navegación */}
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
@@ -27,12 +23,11 @@ const App = () => {
             <li><Link to="/productos/calzado">Calzado</Link></li>
           </ul>
         </nav>
-
-        {/* Rutas */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/productos/:categoria" element={<ItemListContainer />} />
           <Route path='/item/:idItem' element={<ItemDetailsContainer />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </CarritoProvider>
     </Router>

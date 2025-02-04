@@ -1,4 +1,5 @@
-import { useState, createContext } from "react";
+// src/context/CarritoContext.js
+import { createContext, useState } from "react";
 
 // Crear el contexto con un valor predeterminado
 export const CarritoContext = createContext({
@@ -13,33 +14,27 @@ export const CarritoProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
   const [cantidadTotal, setCantidadTotal] = useState(0);
 
-  // Función para agregar productos al carrito
+  // Función para agregar al carrito
   const agregarAlCarrito = (item, cantidad) => {
     const productoExistente = carrito.find(prod => prod.item.id === item.id);
 
     if (!productoExistente) {
+      // Si no existe el producto, lo agregamos
       setCarrito(prev => [...prev, { item, cantidad }]);
       setCantidadTotal(prev => prev + cantidad);
       setTotal(prev => prev + item.precio * cantidad);
     } else {
+      // Si ya existe el producto, lo actualizamos
       const carritoActualizado = carrito.map(prod => {
         if (prod.item.id === item.id) {
           return { ...prod, cantidad: prod.cantidad + cantidad };
-        } else {
-          return prod;
         }
+        return prod;
       });
       setCarrito(carritoActualizado);
       setCantidadTotal(prev => prev + cantidad);
       setTotal(prev => prev + item.precio * cantidad);
     }
-  };
-
-  // Función para vaciar el carrito
-  const vaciarCarrito = () => {
-    setCarrito([]);
-    setCantidadTotal(0);
-    setTotal(0);
   };
 
   // Función para eliminar un producto específico del carrito
@@ -53,6 +48,13 @@ export const CarritoProvider = ({ children }) => {
     }
   };
 
+  // Función para vaciar el carrito
+  const vaciarCarrito = () => {
+    setCarrito([]);
+    setCantidadTotal(0);
+    setTotal(0);
+  };
+
   return (
     <CarritoContext.Provider
       value={{
@@ -64,7 +66,7 @@ export const CarritoProvider = ({ children }) => {
         eliminarProducto
       }}
     >
-      {children} {/* Aquí se renderizan los componentes hijos */}
+      {children}
     </CarritoContext.Provider>
   );
 };

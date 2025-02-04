@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
+import ItemDetails from "../itemDetails/ItemDetails";
+
+
+
 import { getProductos } from "../../utils/productos";
-import ItemDetails from "./itemDetails/ItemDetails";
+
 
 
 import { useParams } from "react-router-dom";
@@ -17,7 +21,7 @@ const ItemDetailsContainer = () => {
     
   return (
     <div>
-        <ItemDetail {...producto} />
+        <ItemDetails {...producto} />
     </div>
   )
 }
