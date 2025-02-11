@@ -1,10 +1,17 @@
 header {
-  color: black;               /* Cambiar el color del texto a negro */
-  display: flex;              /* Activa Flexbox */
-  justify-content: center;    /* Centra el contenido horizontalmente */
-  align-items: flex-start;    /* Alinea el contenido en la parte superior */
-  padding: 20px;              /* Espaciado interno para darle más espacio */
-  text-align: center;         /* Centra el texto */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 15px solid black;
+}
 
-  font-size: 1.5em;           /* Tamaño de fuente más grande */
+.logoMarolio {
+  width: 150px;
+}
+
+li {
+  display: inline-block;
+  margin: 0 15px;
+  text-transform: uppercase;
+  font-weight: bold;
 }

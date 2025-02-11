@@ -1,72 +1,69 @@
-// src/context/CarritoContext.js
-import { createContext, useState } from "react";
+import { Children } from "react";
+import { useState ,createContext } from "react";
 
-// Crear el contexto con un valor predeterminado
 export const CarritoContext = createContext({
-  carrito: [],
-  total: 0,
-  cantidadTotal: 0
+    carrito: [],
+    total: 0,
+    cantidadTotal: 0
 });
 
-// CarritoProvider con los métodos que proporcionará a los componentes
-export const CarritoProvider = ({ children }) => {
-  const [carrito, setCarrito] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [cantidadTotal, setCantidadTotal] = useState(0);
 
-  // Función para agregar al carrito
-  const agregarAlCarrito = (item, cantidad) => {
-    const productoExistente = carrito.find(prod => prod.item.id === item.id);
+export const CarritoProvider = ({children}) =>{
+    const [carrito, setCarrito] = useState([])
+    const [total, setTotal] = useState(0)
+    const [cantidadTotal, setCatidadTotal] = useState(0)
 
-    if (!productoExistente) {
-      // Si no existe el producto, lo agregamos
-      setCarrito(prev => [...prev, { item, cantidad }]);
-      setCantidadTotal(prev => prev + cantidad);
-      setTotal(prev => prev + item.precio * cantidad);
-    } else {
-      // Si ya existe el producto, lo actualizamos
-      const carritoActualizado = carrito.map(prod => {
-        if (prod.item.id === item.id) {
-          return { ...prod, cantidad: prod.cantidad + cantidad };
+   
+
+    const agregarAlCarrito = (item, cantidad) => {
+        const productoExistente = carrito.find(prod => prod.item.id ===item.id)
+
+        if(!productoExistente) {
+            setCarrito(prev => [...prev, {item, cantidad}])
+            setCatidadTotal(prev => prev + cantidad)
+            setTotal(prev => prev + (item.precio *cantidad))
+        } else {
+            const carritoActualizado = carrito.map (prod => {
+                if(prod.item.id == item.id) {
+                    return {...prod, cantidad: prod.cantidad + cantidad}
+                } else {
+                    return prod
+                }
+            })
+            setCarrito(carritoActualizado)
+            setCatidadTotal(prev => prev + cantidad)
+            setTotal(prev => prev + (item.precio * cantidad))
         }
-        return prod;
-      });
-      setCarrito(carritoActualizado);
-      setCantidadTotal(prev => prev + cantidad);
-      setTotal(prev => prev + item.precio * cantidad);
     }
-  };
 
-  // Función para eliminar un producto específico del carrito
-  const eliminarProducto = (id) => {
-    const productoAEliminar = carrito.find(prod => prod.item.id === id);
+    //funcion eliminar Producto:
 
-    if (productoAEliminar) {
-      setCarrito(prev => prev.filter(prod => prod.item.id !== id));
-      setCantidadTotal(prev => prev - productoAEliminar.cantidad);
-      setTotal(prev => prev - productoAEliminar.item.precio * productoAEliminar.cantidad);
+    const eliminarProducto = (id) =>{
+        const productoEliminado = carrito.find(prod => prod.item.id === id)
+        const carritoActualizado = carrito.filter(prod => prod .item.id !== id)
+
+        setCarrito(carritoActualizado)
+        setCatidadTotal(prev => prev - productoEliminado.cantidad)
+        setTotal(prev => prev - (productoEliminado.item.precio * productoEliminado.cantidad))
     }
-  };
 
-  // Función para vaciar el carrito
-  const vaciarCarrito = () => {
-    setCarrito([]);
-    setCantidadTotal(0);
-    setTotal(0);
-  };
 
-  return (
-    <CarritoContext.Provider
-      value={{
-        carrito,
-        total,
-        cantidadTotal,
-        agregarAlCarrito,
-        vaciarCarrito,
-        eliminarProducto
-      }}
-    >
-      {children}
-    </CarritoContext.Provider>
-  );
-};
+
+
+    //funcion para vaciar el carrito
+
+    const vaciarCarrito = () => {
+        setCarrito([]),
+        setCatidadTotal(0)
+        setTotal(0);
+    }
+
+    return(
+        <CarritoContext.Provider value={{carrito, total, cantidadTotal, agregarAlCarrito, eliminarProducto, vaciarCarrito}}>
+            {children}
+        </CarritoContext.Provider>
+    )
+
+
+
+}
