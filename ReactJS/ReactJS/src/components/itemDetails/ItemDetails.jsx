@@ -1,4 +1,3 @@
-// src/components/itemDetails/ItemDetails.jsx
 import React, { useState, useContext } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import { Link } from 'react-router-dom';
