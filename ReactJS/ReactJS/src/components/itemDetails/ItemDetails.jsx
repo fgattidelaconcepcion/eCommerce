@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import { Link } from 'react-router-dom';
 import Contador from '../contador/Contador';
+import { toast } from 'react-toastify';
 
 const ItemDetails = ({ id, nombre, stock, precio, img, descripcion }) => {
 

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ItemList from "../itemList/ItemList";
 import { db } from '../../services/config';
 import {collection,getDocs,query,where} from "firebase/firestore";
-/*import Loader from "../Loader/Loader";*/
+import Loader from '../Loader/Loader';
 
 const ItemListContainer = () => {
     const [productos, setProductos] = useState([]);
@@ -46,14 +46,12 @@ const ItemListContainer = () => {
   }, [categoria]);  // Recargar los productos si cambia la categoría
 */
   return (
-    <div>
-      {loading ? (
-        <p>Loading...</p> // Mensaje de carga mientras se obtienen los productos
-      ) : (
-        <ItemList productos={productos} />
-      )}
-    </div>
-  );
-};
+      <>
+          <h2 style={{ textAlign: "center" }}>Productos</h2>
+          {loading ? <Loader/> : <ItemList productos={productos}/>}
+      </>
+  )
+}
+
 
 export default ItemListContainer;

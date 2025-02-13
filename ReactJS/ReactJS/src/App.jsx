@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, BrowserRouter } from 'react-router-dom';
 import { CarritoProvider } from './context/CarritoContext';
 import NavBar from './components/NavBar/NavBar';
 import CartWidget from './components/CartWidget/CartWidget';
@@ -7,13 +7,15 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailsContainer from './components/itemDetailsContainer/ItemDetailsContainer';
 import Cart from './components/cart/Cart';
 import CheckOut from './components/CheckOut/CheckOut';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer} from 'react-toastify';
 
 import Home from './components/Home/Home';
 
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <CarritoProvider>
         <NavBar />
         <CartWidget />
@@ -32,7 +34,8 @@ const App = () => {
           <Route path='/checkout' element={<CheckOut/>}/>
         </Routes>
       </CarritoProvider>
-    </Router>
+      <ToastContainer />
+    </BrowserRouter>
   );
 };
 
