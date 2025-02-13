@@ -1,4 +1,3 @@
-// src/components/cart/Cart.jsx
 import { useContext } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import CartItem from '../cartItem/CartItem';
@@ -10,7 +9,7 @@ const Cart = () => {
   if (cantidadTotal === 0) {
     return (
       <>
-        <h2>No hay productos en el carrito. ¡Compra de una vez!</h2>
+        <h2>No hay productos en el carrito.</h2>
         <Link to="/">Ver productos</Link>
       </>
     );
@@ -18,7 +17,7 @@ const Cart = () => {
 
   return (
     <div>
-      <h2>Tu Carrito de Compras</h2>
+      <h2>Tu carrito de Compras</h2>
       {carrito.map((producto) => (
         <CartItem key={producto.item.id} {...producto} />
       ))}

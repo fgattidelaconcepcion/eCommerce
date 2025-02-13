@@ -1,18 +1,21 @@
 // src/components/Item/Item.jsx
 import { Link } from 'react-router-dom';
 
-const Item = ({ id, nombre, precio, img }) => {
+const Item = ({id, nombre, precio, img, stock}) => {
 
   return (
-    <div className="item">
-      <img src={img} alt={nombre} />
-      <h3>{nombre}</h3>
-      <p>${precio}</p>
+    
+    <div className='cardProducto'>
+        <img src={img} alt={nombre} />
+        <h3>Nombre: {nombre}</h3>
+        <p>Precio: {precio}</p>
+        <p>ID: {id}</p>
+        <p>Stock: {stock}</p>
+        <Link to={`/item/${id}`}> Ver Detalles </Link>
 
-      {/* Enlace a la página de detalles del producto */}
-      <Link to={`/item/${id}`}>Ver detalles</Link>
+        
     </div>
-  );
-};
+  )
+}
 
-export default Item;
+export default Item

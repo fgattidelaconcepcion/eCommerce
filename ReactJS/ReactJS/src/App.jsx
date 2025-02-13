@@ -6,6 +6,7 @@ import CartWidget from './components/CartWidget/CartWidget';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailsContainer from './components/itemDetailsContainer/ItemDetailsContainer';
 import Cart from './components/cart/Cart';
+import CheckOut from './components/CheckOut/CheckOut';
 
 import Home from './components/Home/Home';
 
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/productos/:categoria" element={<ItemListContainer />} />
           <Route path='/item/:idItem' element={<ItemDetailsContainer />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path='/checkout' element={<CheckOut/>}/>
         </Routes>
       </CarritoProvider>
     </Router>
