@@ -28,7 +28,7 @@ const App = () => {
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/productos/:categoria" element={<ItemListContainer />} />
+          <Route path="/productos/:idCategoria" element={<ItemListContainer />} />
           <Route path='/item/:idItem' element={<ItemDetailsContainer />} />
           <Route path="/cart" element={<Cart />} />
           <Route path='/checkout' element={<CheckOut/>}/>
