@@ -30,21 +30,6 @@ const ItemListContainer = () => {
         })
     },[idCategoria])
 
- /* useEffect(() => {
-    getProductos()
-      .then((productos) => {
-        const productosFiltrados = categoria
-          ? productos.filter((producto) => producto.categoria === categoria)
-          : productos;  // Filtrar los productos si hay categoría
-        setProductos(productosFiltrados);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error al cargar productos:", error);
-        setLoading(false);
-      });
-  }, [categoria]);  // Recargar los productos si cambia la categoría
-*/
   return (
       <>
           <h2 style={{ textAlign: "center" }}>Productos</h2>
